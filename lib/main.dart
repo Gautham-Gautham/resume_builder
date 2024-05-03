@@ -1,10 +1,13 @@
 import 'dart:math';
 
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_resume_template/flutter_resume_template.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:resume_builder/Features/home_screen.dart';
 import 'package:resume_builder/Resume/Screens/create_resume.dart';
+
+import 'firebase_options.dart';
 
 final experienceDetailsProvider = StateProvider<List<ExperienceData>>(
   (ref) => [],
@@ -20,8 +23,13 @@ final hobbiesDetailsProvider = StateProvider<List<String>>(
 );
 double w = 0.0;
 double h = 0.0;
-void main() {
-  runApp(const MyApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 // class MyApp extends StatefulWidget {

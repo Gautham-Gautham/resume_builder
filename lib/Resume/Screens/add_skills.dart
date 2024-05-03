@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_resume_template/flutter_resume_template.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:resume_builder/Core/custom_textform_field/custom_textform.dart';
@@ -36,13 +37,17 @@ class _AddSkillsState extends ConsumerState<AddSkills> {
             CustomTextField(
                 keyboardType: TextInputType.number,
                 controller: star,
-                label: "Star"),
+                label: "Level"),
             spac(),
             ElevatedButton(
                 style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.orange,
                     minimumSize: Size(w * 0.1, h * 0.05)),
-                onPressed: () {},
+                onPressed: () {
+                  Language data =
+                      Language(skill.text.trim(), int.parse(star.text.trim()));
+                  ref.read(skillDetailsProvider).add(data);
+                },
                 child: Text(
                   "Add Skills",
                   style: GoogleFonts.poppins(color: Colors.white),

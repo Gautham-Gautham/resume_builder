@@ -37,7 +37,9 @@ class _AddHobbiesState extends ConsumerState<AddHobbies> {
                 style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.orange,
                     minimumSize: Size(w * 0.1, h * 0.05)),
-                onPressed: () {},
+                onPressed: () {
+                  ref.read(hobbiesDetailsProvider).add(hobbies.text.trim());
+                },
                 child: Text(
                   "Add Hobbies",
                   style: GoogleFonts.poppins(color: Colors.white),
