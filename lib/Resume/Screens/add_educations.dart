@@ -1,21 +1,20 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:resume_builder/Core/custom_textform_field/custom_textform.dart';
 
+import '../../Core/custom_textform_field/custom_textform.dart';
 import '../../main.dart';
 
-class AddSkills extends ConsumerStatefulWidget {
-  const AddSkills({super.key});
+class AddEducations extends ConsumerStatefulWidget {
+  const AddEducations({super.key});
 
   @override
-  ConsumerState createState() => _AddSkillsState();
+  ConsumerState createState() => _AddEducationsState();
 }
 
-class _AddSkillsState extends ConsumerState<AddSkills> {
-  TextEditingController skill = TextEditingController();
-  TextEditingController star = TextEditingController();
+class _AddEducationsState extends ConsumerState<AddEducations> {
+  TextEditingController degree = TextEditingController();
+  TextEditingController university = TextEditingController();
   spac() {
     return SizedBox(
       height: h * 0.05,
@@ -31,12 +30,9 @@ class _AddSkillsState extends ConsumerState<AddSkills> {
         child: Column(
           children: [
             spac(),
-            CustomTextField(controller: skill, label: "Skills"),
+            CustomTextField(controller: degree, label: "Degree"),
             spac(),
-            CustomTextField(
-                keyboardType: TextInputType.number,
-                controller: star,
-                label: "Star"),
+            CustomTextField(controller: university, label: "University"),
             spac(),
             ElevatedButton(
                 style: ElevatedButton.styleFrom(
@@ -44,7 +40,7 @@ class _AddSkillsState extends ConsumerState<AddSkills> {
                     minimumSize: Size(w * 0.1, h * 0.05)),
                 onPressed: () {},
                 child: Text(
-                  "Add Skills",
+                  "Add Education",
                   style: GoogleFonts.poppins(color: Colors.white),
                 ))
           ],

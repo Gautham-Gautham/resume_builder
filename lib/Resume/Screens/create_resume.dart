@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:resume_builder/Core/custom_textform_field/custom_textform.dart';
+import 'package:resume_builder/Resume/Screens/add_educations.dart';
+import 'package:resume_builder/Resume/Screens/add_experience.dart';
+import 'package:resume_builder/Resume/Screens/add_hobbies.dart';
+import 'package:resume_builder/Resume/Screens/add_skills.dart';
 import 'package:resume_builder/main.dart';
 
 class CreateResume extends ConsumerStatefulWidget {
@@ -13,6 +17,13 @@ class CreateResume extends ConsumerStatefulWidget {
 
 class _CreateResumeState extends ConsumerState<CreateResume> {
   TextEditingController name = TextEditingController();
+  TextEditingController bio = TextEditingController();
+  TextEditingController designation = TextEditingController();
+  TextEditingController email = TextEditingController();
+  TextEditingController ph = TextEditingController();
+  TextEditingController address = TextEditingController();
+  TextEditingController street = TextEditingController();
+  TextEditingController country = TextEditingController();
   spac() {
     return SizedBox(
       height: h * 0.05,
@@ -44,44 +55,44 @@ class _CreateResumeState extends ConsumerState<CreateResume> {
                 ),
                 spac(),
                 CustomTextField(
-                  controller: name,
+                  controller: bio,
                   maxLines: 7,
                   label: "Bio",
                   width: w * 0.8,
                 ),
                 spac(),
                 CustomTextField(
-                  controller: name,
+                  controller: designation,
                   label: "Designation",
                   width: w * 0.8,
                 ),
                 spac(),
                 CustomTextField(
-                  controller: name,
+                  controller: email,
                   label: "Email",
                   width: w * 0.8,
                 ),
                 spac(),
                 CustomTextField(
-                  controller: name,
+                  controller: ph,
                   label: "Phone No",
                   width: w * 0.8,
                 ),
                 spac(),
                 CustomTextField(
-                  controller: name,
+                  controller: address,
                   label: "Address",
                   width: w * 0.8,
                 ),
                 spac(),
                 CustomTextField(
-                  controller: name,
+                  controller: street,
                   label: "Street",
                   width: w * 0.8,
                 ),
                 spac(),
                 CustomTextField(
-                  controller: name,
+                  controller: country,
                   label: "Country",
                   width: w * 0.8,
                 ),
@@ -90,11 +101,75 @@ class _CreateResumeState extends ConsumerState<CreateResume> {
                     style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.orange,
                         minimumSize: Size(w * 0.1, h * 0.05)),
-                    onPressed: () {},
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) => AddSkills(),
+                      );
+                    },
                     child: Text(
                       "Add Skills",
                       style: GoogleFonts.poppins(color: Colors.white),
-                    ))
+                    )),
+                spac(),
+                ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.orange,
+                        minimumSize: Size(w * 0.1, h * 0.05)),
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) => AddEducations(),
+                      );
+                    },
+                    child: Text(
+                      "Add Education",
+                      style: GoogleFonts.poppins(color: Colors.white),
+                    )),
+                spac(),
+                ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.orange,
+                        minimumSize: Size(w * 0.1, h * 0.05)),
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) => AddExperience(),
+                      );
+                    },
+                    child: Text(
+                      "Add Experience",
+                      style: GoogleFonts.poppins(color: Colors.white),
+                    )),
+                spac(),
+                ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.orange,
+                        minimumSize: Size(w * 0.1, h * 0.05)),
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) => AddHobbies(),
+                      );
+                    },
+                    child: Text(
+                      "Add Hobby",
+                      style: GoogleFonts.poppins(color: Colors.white),
+                    )),
+                spac(),
+                ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(3)),
+                        backgroundColor: Colors.orange,
+                        minimumSize: Size(w * 0.1, h * 0.05)),
+                    onPressed: () {},
+                    child: Text(
+                      "Create Resume",
+                      style: GoogleFonts.poppins(
+                          color: Colors.white, fontWeight: FontWeight.bold),
+                    )),
+                spac(),
               ],
             ),
           ),

@@ -1,42 +1,37 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_resume_template/flutter_resume_template.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:resume_builder/Core/custom_textform_field/custom_textform.dart';
 
+import '../../Core/custom_textform_field/custom_textform.dart';
 import '../../main.dart';
 
-class AddSkills extends ConsumerStatefulWidget {
-  const AddSkills({super.key});
+class AddHobbies extends ConsumerStatefulWidget {
+  const AddHobbies({super.key});
 
   @override
-  ConsumerState createState() => _AddSkillsState();
+  ConsumerState createState() => _AddHobbiesState();
 }
 
-class _AddSkillsState extends ConsumerState<AddSkills> {
-  TextEditingController skill = TextEditingController();
-  TextEditingController star = TextEditingController();
+class _AddHobbiesState extends ConsumerState<AddHobbies> {
+  TextEditingController hobbies = TextEditingController();
   spac() {
     return SizedBox(
       height: h * 0.05,
     );
   }
 
+  TemplateData? data;
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
       backgroundColor: Colors.white,
       content: Container(
-        height: h * 0.4,
+        height: h * 0.25,
         child: Column(
           children: [
             spac(),
-            CustomTextField(controller: skill, label: "Skills"),
-            spac(),
-            CustomTextField(
-                keyboardType: TextInputType.number,
-                controller: star,
-                label: "Star"),
+            CustomTextField(controller: hobbies, label: "Hobby"),
             spac(),
             ElevatedButton(
                 style: ElevatedButton.styleFrom(
@@ -44,7 +39,7 @@ class _AddSkillsState extends ConsumerState<AddSkills> {
                     minimumSize: Size(w * 0.1, h * 0.05)),
                 onPressed: () {},
                 child: Text(
-                  "Add Skills",
+                  "Add Hobbies",
                   style: GoogleFonts.poppins(color: Colors.white),
                 ))
           ],
